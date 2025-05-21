@@ -28,10 +28,14 @@
   --canto-card: 15px;
 
   --canto-botoes: 10px;
+
+  --h-cabecalho: 70px;
 }
 
 body {
   background: var(--fundo);
   color: var(--texto-fundo-claro);
   font-family: var(--fonte);
+  margin: 0;
+  padding: 0;
 }
