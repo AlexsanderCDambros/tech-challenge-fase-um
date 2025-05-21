@@ -36,6 +36,7 @@ body {
   background: var(--fundo);
   color: var(--texto-fundo-claro);
   font-family: var(--fonte);
+  font-size: var(--texto-m);
   margin: 0;
   padding: 0;
 }
