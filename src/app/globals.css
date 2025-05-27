@@ -51,6 +51,9 @@ body {
   background-color: var(--primaria);
   color: var(--texto-fundo-escuro);
   font-size: var(--texto-m);
+  border-width: 3px;
+  border-style: solid;
+  border-color: var(--fundo-geral);
 }
 
 .botao-primario:hover {
@@ -77,6 +80,9 @@ body {
   border-width: 1px;
   border-style: solid;
   border-color: var(--texto-fundo-claro);
+  border-width: 3px;
+  border-style: solid;
+  border-color: var(--fundo-geral);
 }
 
 .botao-secundario:hover {
@@ -101,6 +107,9 @@ body {
   background-color: var(--erro);
   color: var(--texto-fundo-escuro);
   font-size: var(--texto-m);
+  border-width: 3px;
+  border-style: solid;
+  border-color: var(--fundo-geral);
 }
 
 .botao-exclusao:hover {
