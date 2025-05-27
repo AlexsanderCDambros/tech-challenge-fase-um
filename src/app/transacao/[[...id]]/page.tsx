@@ -1,7 +1,6 @@
 import Cartao from "@/components/cartao/cartao";
 import FormTransacoes from "@/components/form-transacoes/form-transacoes";
 import { ITransacao } from "@/interfaces/itransacao";
-import { useState } from "react";
 
 async function getTransacao(id: number): Promise<ITransacao | undefined> {
   try {

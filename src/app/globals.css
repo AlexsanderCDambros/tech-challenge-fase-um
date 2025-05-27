@@ -115,17 +115,45 @@ body {
 }
 
 .input-select {
-  
+  padding: var(--p);
+  margin: 0;
+  border-radius: var(--canto-botoes);
+  background-color: var(--fundo-geral);
+  color: var(--texto-fundo-claro);
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--texto-fundo-claro);
 }
 
 .input-text {
-  
+  padding: var(--p);
+  margin: 0;
+  border-radius: var(--canto-botoes);
+  background-color: var(--fundo-geral);
+  color: var(--texto-fundo-claro);
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--texto-fundo-claro);
 }
 
 .input-number {
-  
+  padding: var(--p);
+  margin: 0;
+  border-radius: var(--canto-botoes);
+  background-color: var(--fundo-geral);
+  color: var(--texto-fundo-claro);
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--texto-fundo-claro);
 }
 
 .input-data {
-  
+  padding: var(--p);
+  margin: 0;
+  border-radius: var(--canto-botoes);
+  background-color: var(--fundo-geral);
+  color: var(--texto-fundo-claro);
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--texto-fundo-claro);
 }
