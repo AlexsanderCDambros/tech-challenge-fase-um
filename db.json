@@ -44,7 +44,7 @@
             "id": 6,
             "descricao": "Lazer",
             "tipo": "Despesa",
-            "metodo": "Depósito",
+            "metodo": "Dinheiro",
             "valor": 200.00,
             "data": "2023-10-20"
         },
