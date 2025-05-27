@@ -40,3 +40,76 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.botao-primario {
+  padding-left: var(--m);
+  padding-right: var(--m);
+  padding-top: var(--p);
+  padding-bottom: var(--p);
+  margin: 0;
+  border-radius: var(--canto-botoes);
+  background-color: var(--primaria);
+  color: var(--texto-fundo-escuro);
+  font-size: var(--texto-m);
+}
+
+.botao-primario:hover {
+  cursor: pointer;
+  background-color: var(--auxiliar-primaria);
+}
+
+.botao-primario:focus {
+  border-width: 3px;
+  border-style: solid;
+  border-color: var(--texto-fundo-claro);
+}
+
+.botao-secundario {
+  padding-left: var(--m);
+  padding-right: var(--m);
+  padding-top: var(--p);
+  padding-bottom: var(--p);
+  margin: 0;
+  border-radius: var(--canto-botoes);
+  background-color: var(--fundo-geral);
+  color: var(--texto-fundo-claro);
+  font-size: var(--texto-m);
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--texto-fundo-claro);
+}
+
+.botao-secundario:hover {
+  cursor: pointer;
+  background-color: var(--auxiliar-primaria);
+  color: var(--texto-fundo-escuro);
+}
+
+.botao-secundario:focus {
+  border-width: 3px;
+  border-style: solid;
+  border-color: var(--texto-fundo-claro);
+}
+
+.botao-exclusao {
+  padding-left: var(--m);
+  padding-right: var(--m);
+  padding-top: var(--p);
+  padding-bottom: var(--p);
+  margin: 0;
+  border-radius: var(--canto-botoes);
+  background-color: var(--erro);
+  color: var(--texto-fundo-escuro);
+  font-size: var(--texto-m);
+}
+
+.botao-exclusao:hover {
+  cursor: pointer;
+  background-color: var(--auxiliar-erro);
+}
+
+.botao-exclusao:focus {
+  border-width: 3px;
+  border-style: solid;
+  border-color: var(--texto-fundo-claro);
+}

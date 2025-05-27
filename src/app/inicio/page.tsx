@@ -1,5 +1,6 @@
 import Cartao from "@/components/cartao/cartao";
 import ListaTransacoes from "@/components/lista-transacoes/lista-transacoes";
+import SaldoConta from "@/components/saldo-conta/saldo-conta";
 
 export default function Inicio() {
   return (
@@ -11,16 +12,17 @@ export default function Inicio() {
           <p>Aproveite nossa plataforma e pegue as rédias da sua vida financeira de forma fácil e intuitiva</p>
         </Cartao>
         <Cartao classeAdicional="flex flex-col justify-center">
-          <p className="w-max">Saldo da conta corrente</p>
-          <p className="text-[length:var(--texto-g)]">R$ 900,00</p>
+          <SaldoConta></SaldoConta>
         </Cartao>
       </div>
-      <div className="flex flex-row justify-end">
-        <p>botão</p>
+      <div className="flex flex-row justify-end gap-(--p)">
+        <button className="botao-primario">
+          Adicionar transação
+        </button>
       </div>
       <Cartao>
         <h2 className="text-[length:var(--texto-g)] pb-(--m)">Últimas transações</h2>
-        <ListaTransacoes></ListaTransacoes>
+        <ListaTransacoes quantidade={5}></ListaTransacoes>
       </Cartao>
     </div>
   );

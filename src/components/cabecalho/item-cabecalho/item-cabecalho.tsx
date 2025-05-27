@@ -10,7 +10,7 @@ export default function ItemCabecalhoComponent({ item }: { item: ItemCabecalho }
   return (
     <Link 
       href={item.rota} 
-      className={`no-underline text-[length:var(--texto-g)] text-(--texto-fundo-escuro) hover:text-(--texto-fundo-escuro) ${pathname === item.rota ? 'border-b-3 border-b-(texto-fundo-escuro)' : ''}`}
+      className={`no-underline text-[length:var(--texto-m)] text-(--texto-fundo-escuro) hover:text-(--texto-fundo-escuro) ${pathname === item.rota ? 'border-b-3 border-b-(texto-fundo-escuro)' : ''}`}
     >
       <span>{item.nome}</span>
     </Link>
