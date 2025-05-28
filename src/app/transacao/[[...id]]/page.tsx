@@ -1,18 +1,7 @@
 import Cartao from "@/components/cartao/cartao";
 import FormTransacoes from "@/components/form-transacoes/form-transacoes";
 import { ITransacao } from "@/interfaces/itransacao";
-
-async function getTransacao(id: number): Promise<ITransacao | undefined> {
-  try {
-    const res = await fetch('http://127.0.0.1:3001/transacoes/' + id);
-    if (!res.ok) {
-        return undefined; 
-    }
-    return res.json()
-  } catch (error) {
-    return undefined; 
-  }  
-}
+import { getTransacao } from "@/utils/transacoes";
 
 export default async function Transacoes({ params }: { params: { id?: string[] } }) {
     const { id: idArray } = await params;

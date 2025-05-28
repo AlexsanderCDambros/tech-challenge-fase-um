@@ -1,14 +1,6 @@
 import { ITransacao } from "@/interfaces/itransacao";
 import Transacao from "./transacao/transacao";
-
-async function getTransacoes(quantidade?: number): Promise<ITransacao[]> {
-  try {
-    const res = await fetch('http://127.0.0.1:3001/transacoes?_sort=-data' + (quantidade ? `&_limit=${quantidade}` : ''));
-    return res.json()
-  } catch (error) {
-    return []; 
-  }  
-}
+import { getTransacoes } from "@/utils/transacoes";
 
 export default async function ListaTransacoes({quantidade}: {quantidade?: number}) {
   const transacoes: ITransacao[] = await getTransacoes(quantidade);
