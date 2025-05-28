@@ -7,7 +7,7 @@ export default function FormTransacoes({ transacao }: { transacao: ITransacao | 
     const router = useRouter();
 
     const cancelar = () => {
-      router.push('/inicio');
+      router.back();
     };
     
     const [formData, setFormData] = useState({
