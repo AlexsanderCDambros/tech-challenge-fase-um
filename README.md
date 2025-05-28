@@ -32,7 +32,7 @@ Esse processo deve demorar alguns minutos.
 
 ### 3. Rodar o projeto em desenvolvimento
 
-Quando o processo de instalação terminar será necessário abrir 2 terminais na raiz do projeto, um para rodar a aplicação que simula um back end para a nossa aplicação **json-server** e um para rodar a aplicação.
+Quando o processo de instalação terminar será necessário abrir 2 terminais na raiz do projeto, um para rodar a aplicação que simula um back end para a nossa aplicação (**json-server**) e um para rodar a aplicação.
 
 #### 3.1. Rodar o json-server 
 
@@ -45,3 +45,13 @@ No terminal que você deseja rodar o json-server, digite o seguinte comando:
 No terminal que você deseja rodar a aplicação, digite o seguinte comando:
 
 `npm run dev`
+
+### 4. Abrir a aplicação em um navegador
+
+Para abrir a aplicação, basta ir em um navegador e abrir o endereço:
+
+`http://127.0.0.1:3000/` ou `http://localhost:3000/`
+
+E para verificar se o json-server está rodando, você pode acessar o endereço:
+
+`http://127.0.0.1:3001/` ou `http://localhost:3001/`
