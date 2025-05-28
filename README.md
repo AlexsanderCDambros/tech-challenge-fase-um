@@ -18,7 +18,7 @@ Para começar faça o download dos arquivos ou clone esse repositório em sua m�
 
 Comando para clonar o repositório:
     
-`git clone https://github.com/AlexsanderCDambros/tech-challenge-fase-um.gits`
+`git clone https://github.com/AlexsanderCDambros/tech-challenge-fase-um.git`
 
 
 ### 2. Instalação das dependências 
