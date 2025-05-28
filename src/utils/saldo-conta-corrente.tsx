@@ -10,7 +10,7 @@ export async function getSaldo(): Promise<ISaldoConta | undefined>  {
   }  
 }
 
-export async function ajustarSaldo(valor: number, tipo: 'aumentar' | 'diminuir'): Promise<boolean> {
+async function auxAjustarSaldo(valor: number, tipo: 'aumentar' | 'diminuir'): Promise<boolean> {
     const saldo = await getSaldo();
     
     if (!saldo) {
@@ -45,23 +45,23 @@ export async function ajustarSaldo(valor: number, tipo: 'aumentar' | 'diminuir')
     return false;
 }
 
-export async function correcaoSaldo(transacao: ITransacao, operacao: 'normal' | 'inversa'): Promise<boolean> {
+export async function ajustarSaldo(transacao: ITransacao, operacao: 'normal' | 'inversa'): Promise<boolean> {
     let ajustouSaldo: boolean = false;
     
     if (operacao ==='normal') {
       if (transacao?.tipo === 'Despesa') {
-          ajustouSaldo = await ajustarSaldo(transacao.valor, 'diminuir');
+          ajustouSaldo = await auxAjustarSaldo(transacao.valor, 'diminuir');
       }
       else if(transacao?.tipo === 'Receita') {
-          ajustouSaldo = await ajustarSaldo(transacao.valor, 'aumentar');
+          ajustouSaldo = await auxAjustarSaldo(transacao.valor, 'aumentar');
       }
     }
     else if (operacao === 'inversa') {
       if (transacao?.tipo === 'Despesa') {
-          ajustouSaldo = await ajustarSaldo(transacao.valor, 'aumentar');
+          ajustouSaldo = await auxAjustarSaldo(transacao.valor, 'aumentar');
       }
       else if(transacao?.tipo === 'Receita') {
-          ajustouSaldo = await ajustarSaldo(transacao.valor, 'diminuir');
+          ajustouSaldo = await auxAjustarSaldo(transacao.valor, 'diminuir');
       }
     }
 

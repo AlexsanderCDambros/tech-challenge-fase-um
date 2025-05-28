@@ -1,7 +1,7 @@
 'use client';
 
 import { ITransacao } from "@/interfaces/itransacao";
-import { correcaoSaldo } from "@/utils/saldo-conta-corrente";
+import { ajustarSaldo } from "@/utils/saldo-conta-corrente";
 import { useRouter } from "next/navigation";
 
 export default function ExcluirTransacao({transacao}: {transacao: ITransacao}) {
@@ -14,7 +14,7 @@ export default function ExcluirTransacao({transacao}: {transacao: ITransacao}) {
             return;
         }
         
-        ajustousaldo = await correcaoSaldo(transacao, 'inversa');
+        ajustousaldo = await ajustarSaldo(transacao, 'inversa');
         
         if (!ajustousaldo) {
             alert("Erro ao ajustar o saldo, tente novamente.");
@@ -31,13 +31,13 @@ export default function ExcluirTransacao({transacao}: {transacao: ITransacao}) {
             }
             if (!res.ok) {
                 router.refresh();
-                await correcaoSaldo(transacao, 'normal');
+                await ajustarSaldo(transacao, 'normal');
                 alert("Erro ao excluir transação, tente novamente.");
             }
         }
         catch (error) {
             console.log("Erro ao excluir transação: " + error);
-            await correcaoSaldo(transacao, 'normal');
+            await ajustarSaldo(transacao, 'normal');
         }
     }
 

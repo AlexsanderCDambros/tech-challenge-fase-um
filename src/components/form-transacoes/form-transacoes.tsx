@@ -1,6 +1,6 @@
 'use client';
 import { ITransacao } from "@/interfaces/itransacao";
-import { correcaoSaldo } from "@/utils/saldo-conta-corrente";
+import { ajustarSaldo } from "@/utils/saldo-conta-corrente";
 import { createTransacao, updateTransacao } from "@/utils/transacoes";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -43,17 +43,17 @@ export default function FormTransacoes({ transacao }: { transacao: ITransacao | 
             criouEditouTransacao = await createTransacao(formData);
         }
         else {
-            ajustouSaldo = await correcaoSaldo(transacao, 'inversa');
+            ajustouSaldo = await ajustarSaldo(transacao, 'inversa');
             criouEditouTransacao = await updateTransacao(transacao.id, formData);
         }
 
         if (!criouEditouTransacao) {
-            if(transacao && transacao.id) await correcaoSaldo(transacao, 'normal');
+            if(transacao && transacao.id) await ajustarSaldo(transacao, 'normal');
             alert("Erro ao criar ou editar a transação, tente novamente.");
             return;
         }
 
-        await correcaoSaldo(formData, 'normal');
+        await ajustarSaldo(formData, 'normal');
         alert("Transação salva com sucesso!");
         router.back();
     };
