@@ -1,7 +1,7 @@
 'use client';
 
 import { ITransacao } from "@/interfaces/itransacao";
-import { ajustarSaldo } from "@/utils/saldo-conta-corrente";
+import { correcaoSaldo } from "@/utils/saldo-conta-corrente";
 import { useRouter } from "next/navigation";
 
 export default function ExcluirTransacao({transacao}: {transacao: ITransacao}) {
@@ -14,12 +14,7 @@ export default function ExcluirTransacao({transacao}: {transacao: ITransacao}) {
             return;
         }
         
-        if (transacao.tipo === 'Despesa') {
-            ajustousaldo = await ajustarSaldo(transacao.valor, 'aumentar');
-        }
-        else if( transacao.tipo === 'Receita') {
-            ajustousaldo = await ajustarSaldo(transacao.valor, 'diminuir');
-        }
+        ajustousaldo = await correcaoSaldo(transacao, 'inversa');
         
         if (!ajustousaldo) {
             alert("Erro ao ajustar o saldo, tente novamente.");
@@ -36,23 +31,13 @@ export default function ExcluirTransacao({transacao}: {transacao: ITransacao}) {
             }
             if (!res.ok) {
                 router.refresh();
-                if (transacao.tipo === 'Despesa') {
-                    await ajustarSaldo(transacao.valor, 'diminuir');
-                }
-                else if( transacao.tipo === 'Receita') {
-                    await ajustarSaldo(transacao.valor, 'aumentar');
-                }
+                await correcaoSaldo(transacao, 'normal');
                 alert("Erro ao excluir transação, tente novamente.");
             }
         }
         catch (error) {
             console.log("Erro ao excluir transação: " + error);
-            if (transacao.tipo === 'Despesa') {
-                await ajustarSaldo(transacao.valor, 'diminuir');
-            }
-            else if( transacao.tipo === 'Receita') {
-                await ajustarSaldo(transacao.valor, 'aumentar');
-            }
+            await correcaoSaldo(transacao, 'normal');
         }
     }
 

@@ -20,3 +20,39 @@ export async function getTransacoes(quantidade?: number): Promise<ITransacao[]> 
     return []; 
   }  
 }
+
+export async function updateTransacao(id: number, transacao: ITransacao): Promise<boolean> {
+  try {
+    const res = await fetch('http://127.0.0.1:3001/transacoes/' + id, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(transacao),
+    });
+    if (!res.ok) {
+        return false; 
+    }
+    return true;
+  } catch (error) {
+    return false; 
+  }  
+}
+
+export async function createTransacao(transacao: ITransacao): Promise<boolean> {
+  try {
+    const res = await fetch('http://127.0.0.1:3001/transacoes', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(transacao),
+    });
+    if (!res.ok) {
+        return false; 
+    }
+    return true;
+  } catch (error) {
+    return false; 
+  }  
+}

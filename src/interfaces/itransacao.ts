@@ -1,5 +1,5 @@
 export interface ITransacao  {
-    id: number;
+    id?: number;
     descricao: string;
     tipo: string;
     metodo: string;

@@ -1,4 +1,5 @@
 import { ISaldoConta } from "@/interfaces/isaldo-conta";
+import { ITransacao } from "@/interfaces/itransacao";
 
 export async function getSaldo(): Promise<ISaldoConta | undefined>  {
   try {
@@ -42,4 +43,27 @@ export async function ajustarSaldo(valor: number, tipo: 'aumentar' | 'diminuir')
         return false;
     }  
     return false;
+}
+
+export async function correcaoSaldo(transacao: ITransacao, operacao: 'normal' | 'inversa'): Promise<boolean> {
+    let ajustouSaldo: boolean = false;
+    
+    if (operacao ==='normal') {
+      if (transacao?.tipo === 'Despesa') {
+          ajustouSaldo = await ajustarSaldo(transacao.valor, 'diminuir');
+      }
+      else if(transacao?.tipo === 'Receita') {
+          ajustouSaldo = await ajustarSaldo(transacao.valor, 'aumentar');
+      }
+    }
+    else if (operacao === 'inversa') {
+      if (transacao?.tipo === 'Despesa') {
+          ajustouSaldo = await ajustarSaldo(transacao.valor, 'aumentar');
+      }
+      else if(transacao?.tipo === 'Receita') {
+          ajustouSaldo = await ajustarSaldo(transacao.valor, 'diminuir');
+      }
+    }
+
+    return ajustouSaldo;
 }

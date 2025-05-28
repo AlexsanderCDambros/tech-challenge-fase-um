@@ -1,5 +1,7 @@
 'use client';
 import { ITransacao } from "@/interfaces/itransacao";
+import { correcaoSaldo } from "@/utils/saldo-conta-corrente";
+import { createTransacao, updateTransacao } from "@/utils/transacoes";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -16,7 +18,7 @@ export default function FormTransacoes({ transacao }: { transacao: ITransacao | 
       descricao: transacao?.descricao || '',
       valor: transacao?.valor.toFixed(2) || 0.00,
       data: transacao?.data || new Date().toISOString().split('T')[0]
-    });
+    } as ITransacao);
 
     const handleChange = (e:any) => {
       const { name, value } = e.target;
@@ -27,25 +29,33 @@ export default function FormTransacoes({ transacao }: { transacao: ITransacao | 
     };
 
     const handleSubmit = async (e:any) => {
-      e.preventDefault();
-      
-      console.log('Dados do formulário:', formData);
-      
-      // // Enviar dados para uma API route do Next.js
-      // const response = await fetch('/api/contact', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: JSON.stringify(formData),
-      // });
+        e.preventDefault();
 
-      // if (response.ok) {
-      //   alert('Mensagem enviada com sucesso!');
-      //   setFormData({ tipo: '', email: '', message: '' });
-      // } else {
-      //   alert('Ocorreu um erro ao enviar a mensagem.');
-      // }
+        let ajustouSaldo: boolean = false;
+        let criouEditouTransacao: boolean = false;
+        
+        if (!ajustouSaldo) {
+            alert("Erro ao ajustar o saldo, tente novamente.");
+            return;
+        }
+
+        if(!transacao || !transacao.id) {
+            criouEditouTransacao = await createTransacao(formData);
+        }
+        else {
+            ajustouSaldo = await correcaoSaldo(transacao, 'inversa');
+            criouEditouTransacao = await updateTransacao(transacao.id, formData);
+        }
+
+        if (!criouEditouTransacao) {
+            if(transacao && transacao.id) await correcaoSaldo(transacao, 'normal');
+            alert("Erro ao criar ou editar a transação, tente novamente.");
+            return;
+        }
+
+        await correcaoSaldo(formData, 'normal');
+        alert("Transação salva com sucesso!");
+        router.back();
     };
 
     return (
