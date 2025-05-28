@@ -10,7 +10,7 @@ export async function getSaldo(): Promise<ISaldoConta | undefined>  {
   }  
 }
 
-async function auxAjustarSaldo(valor: number, tipo: 'aumentar' | 'diminuir'): Promise<boolean> {
+async function auxAjustarSaldo(valor: string, tipo: 'aumentar' | 'diminuir'): Promise<boolean> {
     const saldo = await getSaldo();
     
     if (!saldo) {
@@ -18,9 +18,10 @@ async function auxAjustarSaldo(valor: number, tipo: 'aumentar' | 'diminuir'): Pr
         return false;
     }
 
-    tipo === 'aumentar' ? 
-      saldo.total += valor : 
-      saldo.total -= valor;
+    
+    saldo.total = (tipo === 'aumentar' ? 
+        Number(saldo.total) + Number(valor) :
+        Number(saldo.total) - Number(valor)).toString();
 
     try {
         const res = await fetch('http://127.0.0.1:3001/conta-corrente/1', {

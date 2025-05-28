@@ -16,7 +16,7 @@ export default async function SaldoConta() {
   return (
     <>
         <p className="w-max">Saldo da conta corrente</p>
-        <p className="text-[length:var(--texto-g)]">R$ {saldo.total.toFixed(2)}</p>
+        <p className="text-[length:var(--texto-g)]">R$ {Number(saldo.total).toFixed(2)}</p>
     </>
   )
 }

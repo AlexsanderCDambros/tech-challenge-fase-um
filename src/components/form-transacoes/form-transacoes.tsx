@@ -16,7 +16,7 @@ export default function FormTransacoes({ transacao }: { transacao: ITransacao | 
       tipo: transacao?.tipo || 'Receita',
       metodo: transacao?.metodo || 'Dinheiro',
       descricao: transacao?.descricao || '',
-      valor: transacao?.valor.toFixed(2) || 0.00,
+      valor: Number(transacao?.valor).toFixed(2) || 0.00,
       data: transacao?.data || new Date().toISOString().split('T')[0]
     } as ITransacao);
 
@@ -33,17 +33,16 @@ export default function FormTransacoes({ transacao }: { transacao: ITransacao | 
 
         let ajustouSaldo: boolean = false;
         let criouEditouTransacao: boolean = false;
-        
-        if (!ajustouSaldo) {
-            alert("Erro ao ajustar o saldo, tente novamente.");
-            return;
-        }
 
         if(!transacao || !transacao.id) {
             criouEditouTransacao = await createTransacao(formData);
         }
         else {
             ajustouSaldo = await ajustarSaldo(transacao, 'inversa');
+            if (!ajustouSaldo) {
+                alert("Erro ao ajustar o saldo, tente novamente.");
+                return;
+            }
             criouEditouTransacao = await updateTransacao(transacao.id, formData);
         }
 
@@ -55,7 +54,7 @@ export default function FormTransacoes({ transacao }: { transacao: ITransacao | 
 
         await ajustarSaldo(formData, 'normal');
         alert("Transação salva com sucesso!");
-        router.back();
+        router.push('/inicio');
     };
 
     return (

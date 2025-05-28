@@ -1,4 +1,4 @@
 export interface ISaldoConta {
-    id: number;
-    total: number;
+    id: string;
+    total: string;
 }

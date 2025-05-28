@@ -1,8 +1,8 @@
 export interface ITransacao  {
-    id?: number;
+    id?: string;
     descricao: string;
     tipo: string;
     metodo: string;
-    valor: number;
+    valor: string;
     data: string;
 }

@@ -1,6 +1,6 @@
 import { ITransacao } from "@/interfaces/itransacao";
 
-export async function getTransacao(id: number): Promise<ITransacao | undefined> {
+export async function getTransacao(id: string): Promise<ITransacao | undefined> {
   try {
     const res = await fetch('http://127.0.0.1:3001/transacoes/' + id);
     if (!res.ok) {
@@ -21,7 +21,7 @@ export async function getTransacoes(quantidade?: number): Promise<ITransacao[]> 
   }  
 }
 
-export async function updateTransacao(id: number, transacao: ITransacao): Promise<boolean> {
+export async function updateTransacao(id: string, transacao: ITransacao): Promise<boolean> {
   try {
     const res = await fetch('http://127.0.0.1:3001/transacoes/' + id, {
       method: 'PUT',

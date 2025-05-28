@@ -9,7 +9,7 @@ export default async function Transacoes({ params }: { params: { id?: string[] }
     let transacao: ITransacao | undefined = undefined;
 
     if (id) {
-        transacao = await getTransacao(Number(id));
+        transacao = await getTransacao(id);
     }
 
     return (

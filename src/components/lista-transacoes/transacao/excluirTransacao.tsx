@@ -26,8 +26,8 @@ export default function ExcluirTransacao({transacao}: {transacao: ITransacao}) {
                 method: 'DELETE'
             });
             if (res.ok) {
-                alert("Transação excluída com sucesso!");
                 router.refresh();
+                alert("Transação excluída com sucesso!");
             }
             if (!res.ok) {
                 router.refresh();
@@ -36,6 +36,7 @@ export default function ExcluirTransacao({transacao}: {transacao: ITransacao}) {
             }
         }
         catch (error) {
+            router.refresh();
             console.log("Erro ao excluir transação: " + error);
             await ajustarSaldo(transacao, 'normal');
         }
