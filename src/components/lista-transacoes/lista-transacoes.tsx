@@ -17,7 +17,7 @@ export default async function ListaTransacoes({quantidade}: {quantidade?: number
     return (
         <div className="flex flex-col items-center justify-center pt-(--m)">
           <p className="text-[length:var(--texto-m)]">Não foi possível buscar as suas transações</p>
-          <p className="text-[length:var(--texto-m)]">Por favor, tente novamente mais tarde</p>
+          <p className="text-[length:var(--texto-m)]">Por favor, insira uma nova transação</p>
         </div>
       )
   }

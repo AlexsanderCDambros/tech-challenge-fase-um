@@ -1,18 +1,10 @@
 import { ISaldoConta } from "@/interfaces/isaldo-conta";
-
-async function getSaldo(): Promise<ISaldoConta[]>  {
-  try {
-    const res = await fetch('http://127.0.0.1:3001/conta-corrente');
-    return res.json()
-  } catch (error) {
-    return []; 
-  }  
-}
+import { getSaldo } from "@/utils/saldo-conta-corrente";
 
 export default async function SaldoConta() {
-  const saldo: ISaldoConta[] = await getSaldo();
+  const saldo: ISaldoConta | undefined= await getSaldo();
 
-  if (!saldo || saldo.length === 0) {
+  if (!saldo) {
     return (
         <>
           <p className="w-max">Saldo da conta corrente</p>
@@ -24,7 +16,7 @@ export default async function SaldoConta() {
   return (
     <>
         <p className="w-max">Saldo da conta corrente</p>
-        <p className="text-[length:var(--texto-g)]">R$ {saldo[0].total.toFixed(2)}</p>
+        <p className="text-[length:var(--texto-g)]">R$ {saldo.total.toFixed(2)}</p>
     </>
   )
 }

@@ -1,5 +1,7 @@
 import { formatDate } from "@/utils/format-date";
 import { ITransacao } from "@/interfaces/itransacao";
+import Link from "next/link";
+import ExcluirTransacao from "./excluirTransacao";
 
 export default function Transacao({transacao}: {transacao: ITransacao}) {
   return (
@@ -16,8 +18,12 @@ export default function Transacao({transacao}: {transacao: ITransacao}) {
             </div>
           </div>
           <div className="flex justify-end sm:justify-between items-center gap-(--p)">
-            <button className="botao-primario">Editar</button>
-            <button className="botao-exclusao">Excluir</button>
+            <Link
+              href={`/transacao/${transacao.id}`}
+            >
+              <button className="botao-primario">Editar</button>
+            </Link>
+            <ExcluirTransacao transacao={transacao}></ExcluirTransacao>
           </div>
         </div>
     </li>

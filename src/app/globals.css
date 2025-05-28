@@ -80,9 +80,7 @@ body {
   border-width: 1px;
   border-style: solid;
   border-color: var(--texto-fundo-claro);
-  border-width: 3px;
-  border-style: solid;
-  border-color: var(--fundo-geral);
+  margin: 2px;
 }
 
 .botao-secundario:hover {
@@ -92,6 +90,7 @@ body {
 }
 
 .botao-secundario:focus {
+  margin: 0;
   border-width: 3px;
   border-style: solid;
   border-color: var(--texto-fundo-claro);
