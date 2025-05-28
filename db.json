@@ -1,106 +1,106 @@
 {
     "transacoes": [
         {
-            "id": 1,
+            "id": "1",
             "descricao": "Salário",
             "tipo": "Receita",
             "metodo": "Transferência",
-            "valor": 2000.00,
+            "valor": "2000.00",
             "data": "2023-10-01"
         },
         {
-            "id": 2,
+            "id": "2",
             "descricao": "Aluguel",
             "tipo": "Despesa",
             "metodo": "Depósito",
-            "valor": 800.00,
+            "valor": "800.00",
             "data": "2023-10-05"
         },
         {
-            "id": 3,
+            "id": "3",
             "descricao": "Supermercado",
             "tipo": "Despesa",
             "metodo": "Cartão de crédito",
-            "valor": 150.00,
+            "valor": "150.00",
             "data": "2023-10-10"
         },
         {
-            "id": 4,
+            "id": "4",
             "descricao": "Transporte",
             "tipo": "Despesa",
             "metodo": "Cartão de débito",
-            "valor": 50.00,
+            "valor": "50.00",
             "data": "2023-10-15"
         },
         {
-            "id": 5,
+            "id": "5",
             "descricao": "Transporte",
             "tipo": "Despesa",
             "metodo": "Cartão de débito",
-            "valor": 50.00,
+            "valor": "50.00",
             "data": "2023-10-16"
         },
         {
-            "id": 6,
+            "id": "6",
             "descricao": "Lazer",
             "tipo": "Despesa",
             "metodo": "Dinheiro",
-            "valor": 200.00,
+            "valor": "200.00",
             "data": "2023-10-20"
         },
         {
-            "id": 7,
+            "id": "7",
             "descricao": "Jantar",
             "tipo": "Despesa",
             "metodo": "Cartão de crédito",
-            "valor": 100.00,
+            "valor": "100.00",
             "data": "2023-10-25"
         },
         {
-            "id": 8,
+            "id": "8",
             "descricao": "Salário Extra",
             "tipo": "Receita",
             "metodo": "Transferência",
-            "valor": 500.00,
+            "valor": "500.00",
             "data": "2023-10-30"
         },
         {
-            "id": 9,
+            "id": "9",
             "descricao": "Conta de Luz",
             "tipo": "Despesa",
             "metodo": "Depósito",
-            "valor": 120.00,
+            "valor": "120.00",
             "data": "2023-10-28"
         },
         {
-            "id": 10,
+            "id": "10",
             "descricao": "Conta de Água",
             "tipo": "Despesa",
             "metodo": "Depósito",
-            "valor": 80.00,
+            "valor": "80.00",
             "data": "2023-10-29"
         },
         {
-            "id": 11,
+            "id": "11",
             "descricao": "Internet",
             "tipo": "Despesa",
             "metodo": "Depósito",
-            "valor": 60.00,
+            "valor": "60.00",
             "data": "2023-10-30"
         },
         {
-            "id": 12,
+            "id": "12",
             "descricao": "Transporte",
             "tipo": "Despesa",
             "metodo": "Cartão de débito",
-            "valor": 50.00,
+            "valor": "50.00",
             "data": "2023-10-31"
         }
     ],
     "conta-corrente": [
         {
-            "id": 1,
-            "total": 840.00
+            "id": "1",
+            "total": "840.00"
         }
     ]
 }
