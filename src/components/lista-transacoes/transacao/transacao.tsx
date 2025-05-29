@@ -50,8 +50,15 @@ export default function Transacao(
             <p className="text-[length:var(--texto-m)]">{transacao.descricao}</p>
             <p className="text-[length:var(--texto-p)]">{transacao.tipo}</p>
           </div>
-          <div className="flex flex-col sm:items-end">
-            <p className="text-[length:var(--texto-m)]">R$ {Number(transacao.valor).toFixed(2)}</p>
+          <div className="flex flex-col items-end">
+            <p className={
+              `text-[length:var(--texto-m)] 
+              ${
+                transacao.tipo === 'Receita' ?
+                'text-(--sucesso)' :
+                'text-(--erro)'
+              }`}
+            >R$ {transacao.tipo === 'Receita' ? '+' : '-'}{Number(transacao.valor).toFixed(2)}</p>
             <p className="text-[length:var(--texto-p)]">{formatDate(transacao.data)}</p>
           </div>
         </div>
