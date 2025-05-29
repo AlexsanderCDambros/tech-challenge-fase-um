@@ -53,7 +53,6 @@ export default function FormTransacoes({ transacao }: { transacao: ITransacao | 
         }
 
         await ajustarSaldo(formData, 'normal');
-        alert("Transação salva com sucesso!");
         router.push('/inicio');
     };
 

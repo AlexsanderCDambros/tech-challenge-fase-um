@@ -27,7 +27,6 @@ export default function ExcluirTransacao({transacao}: {transacao: ITransacao}) {
             });
             if (res.ok) {
                 router.refresh();
-                alert("Transação excluída com sucesso!");
             }
             if (!res.ok) {
                 router.refresh();
