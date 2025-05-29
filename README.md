@@ -1,10 +1,10 @@
 # Tech Challenge - Fase 1
 
-Repositório da **Fase 1** do **Tech Challenge** da **Pós tech em Frontend Engineering** - **FIAP**.
+Repositório do **Tech Challenge** da **Fase 1** da **Pós tech em Frontend Engineering** - **FIAP**.
 
 Acesse o protótipo e Design System adotado em: [Link para o Figma](https://www.figma.com/design/bFMNo7eX03D27ELoMAsG3j/Tech-Challenge?node-id=0-1&t=tGjApXol54Ev9Ruh-1)
 
-Acesso ao vídeo de demonstração e entrega do tech challenge: [Link para o vídeo no Youtube](https://www.google.com)
+Acesso ao vídeo de demonstração e entrega do tech challenge: [Link para o vídeo no Youtube](https://youtu.be/DlZikvfLYOY)
 
 Desenvolvido por Alexsander Chagas Dambros | [LinkedIn](https://www.linkedin.com/in/alexsandercdambros/)
 
