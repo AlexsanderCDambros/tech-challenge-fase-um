@@ -2,12 +2,18 @@
 
 import { ITransacao } from "@/interfaces/itransacao";
 import { ajustarSaldo } from "@/utils/saldo-conta-corrente";
+import { deleteTransacao } from "@/utils/transacoes";
 import { useRouter } from "next/navigation";
 
 export default function ExcluirTransacao({transacao}: {transacao: ITransacao}) {
     const router = useRouter();
 
     async function excluirTransacao() {
+        if (!transacao || !transacao.id) {
+            alert("Transação inválida ou não encontrada.");
+            return;
+        }
+
         let ajustousaldo: boolean = false;
 
         if (!confirm("Tem certeza que deseja excluir esta transação?")) {
@@ -21,24 +27,15 @@ export default function ExcluirTransacao({transacao}: {transacao: ITransacao}) {
             return;
         }
 
-        try {
-            const res = await fetch('http://127.0.0.1:3001/transacoes/' + transacao.id, {
-                method: 'DELETE'
-            });
-            if (res.ok) {
-                router.refresh();
-            }
-            if (!res.ok) {
-                router.refresh();
-                await ajustarSaldo(transacao, 'normal');
-                alert("Erro ao excluir transação, tente novamente.");
-            }
-        }
-        catch (error) {
-            router.refresh();
-            console.log("Erro ao excluir transação: " + error);
+        const deletouTransacao: boolean = await deleteTransacao(transacao.id);
+
+        if (!deletouTransacao) {
             await ajustarSaldo(transacao, 'normal');
+            alert("Erro ao excluir transação, tente novamente.");
+            return;
         }
+
+        router.refresh();
     }
 
     return (

@@ -4,12 +4,12 @@ export async function getTransacao(id: string): Promise<ITransacao | undefined> 
   try {
     const res = await fetch('http://127.0.0.1:3001/transacoes/' + id);
     if (!res.ok) {
-        return undefined; 
+      return undefined;
     }
     return res.json()
   } catch (error) {
-    return undefined; 
-  }  
+    return undefined;
+  }
 }
 
 export async function getTransacoes(quantidade?: number): Promise<ITransacao[]> {
@@ -17,8 +17,8 @@ export async function getTransacoes(quantidade?: number): Promise<ITransacao[]> 
     const res = await fetch('http://127.0.0.1:3001/transacoes?_sort=-data' + (quantidade ? `&_limit=${quantidade}` : ''));
     return res.json()
   } catch (error) {
-    return []; 
-  }  
+    return [];
+  }
 }
 
 export async function updateTransacao(id: string, transacao: ITransacao): Promise<boolean> {
@@ -31,12 +31,12 @@ export async function updateTransacao(id: string, transacao: ITransacao): Promis
       body: JSON.stringify(transacao),
     });
     if (!res.ok) {
-        return false; 
+      return false;
     }
     return true;
   } catch (error) {
-    return false; 
-  }  
+    return false;
+  }
 }
 
 export async function createTransacao(transacao: ITransacao): Promise<boolean> {
@@ -49,10 +49,29 @@ export async function createTransacao(transacao: ITransacao): Promise<boolean> {
       body: JSON.stringify(transacao),
     });
     if (!res.ok) {
-        return false; 
+      return false;
     }
     return true;
   } catch (error) {
-    return false; 
-  }  
+    return false;
+  }
+}
+
+export async function deleteTransacao(id: string): Promise<boolean> {
+  try {
+    const res = await fetch('http://127.0.0.1:3001/transacoes/' + id, {
+      method: 'DELETE'
+    });
+    if (res.ok) {
+      return true
+    }
+    else {
+      alert("Erro ao excluir transação, tente novamente.");
+      return false;
+    }
+  }
+  catch (error) {
+    console.log("Erro ao excluir transação: " + error);
+    return false;
+  }
 }
