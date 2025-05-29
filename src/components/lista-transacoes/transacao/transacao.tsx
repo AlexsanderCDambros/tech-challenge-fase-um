@@ -70,7 +70,7 @@ export default function Transacao(
                 >
                   <button className="botao-primario">Editar</button>
                 </Link>
-                <button onClick={excluirTransacao} className="botao-exclusao">Excluir</button> :
+                <button onClick={excluirTransacao} className="botao-exclusao">Excluir</button>
               </div>
         : ''}
       </div>
