@@ -53,7 +53,9 @@ export default function FormTransacoes({ transacao }: { transacao: ITransacao | 
         }
 
         await ajustarSaldo(formData, 'normal');
-        router.push('/inicio');
+
+        await new Promise(resolve => setTimeout(resolve, 400));
+        router.replace('/inicio');
     };
 
     return (

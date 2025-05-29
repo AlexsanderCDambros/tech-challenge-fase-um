@@ -1,9 +1,26 @@
+'use client';
 import { ITransacao } from "@/interfaces/itransacao";
 import Transacao from "./transacao/transacao";
 import { getTransacoes } from "@/utils/transacoes";
+import { useEffect, useState } from "react";
 
-export default async function ListaTransacoes({quantidade}: {quantidade?: number}) {
-  const transacoes: ITransacao[] = await getTransacoes(quantidade);
+export default function ListaTransacoes({quantidade, podeExcluir}: {quantidade?: number, podeExcluir?: boolean}) {
+  const [transacoes, setTransacoes] = useState<ITransacao[]>([]);
+  const [atualizar, setAtualizar] = useState<boolean>(false);
+
+  const buscaTransacoes = async () => {
+    const transacoes: ITransacao[] = await getTransacoes(quantidade);
+    setTransacoes(transacoes);
+  }
+  
+  useEffect(() => {
+    buscaTransacoes();
+  }, 
+  [atualizar]);
+
+  const atualizarTransacoes = () => {
+    setAtualizar(!atualizar);
+  }
 
   if (!transacoes || transacoes.length === 0) {
     return (
@@ -18,7 +35,12 @@ export default async function ListaTransacoes({quantidade}: {quantidade?: number
     <ul>
         {
           transacoes.map((transacao: ITransacao) => (
-            <Transacao key={transacao.id} transacao={transacao}></Transacao>
+            <Transacao 
+              key={transacao.id} 
+              transacao={transacao} 
+              podeExcluir={podeExcluir}
+              onExclusao={atualizarTransacoes}
+            ></Transacao>
           ))
         }
     </ul>

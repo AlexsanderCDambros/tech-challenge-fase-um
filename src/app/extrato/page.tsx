@@ -16,7 +16,7 @@ export default function Extrato() {
         </Link>
       </div>
       <Cartao>
-        <ListaTransacoes></ListaTransacoes>
+        <ListaTransacoes podeExcluir></ListaTransacoes>
       </Cartao>
     </div>
   );
