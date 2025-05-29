@@ -58,7 +58,7 @@ export default function Transacao(
                 'text-(--sucesso)' :
                 'text-(--erro)'
               }`}
-            >R$ {transacao.tipo === 'Receita' ? '+' : '-'}{Number(transacao.valor).toFixed(2)}</p>
+            >{transacao.tipo === 'Receita' ? '+' : '-'}R$ {Number(transacao.valor).toFixed(2)}</p>
             <p className="text-[length:var(--texto-p)]">{formatDate(transacao.data)}</p>
           </div>
         </div>
