@@ -4,6 +4,8 @@ Repositório da **Fase 1** do **Tech Challenge** da **Pós tech em Frontend Engi
 
 Acesse o protótipo e Design System adotado em: [Link para o Figma](https://www.figma.com/design/bFMNo7eX03D27ELoMAsG3j/Tech-Challenge?node-id=0-1&t=tGjApXol54Ev9Ruh-1)
 
+Acesso ao vídeo de demonstração e entrega do tech challenge: [Link para o vídeo no Youtube](https://www.google.com)
+
 Desenvolvido por Alexsander Chagas Dambros | [LinkedIn](https://www.linkedin.com/in/alexsandercdambros/)
 
 ---
