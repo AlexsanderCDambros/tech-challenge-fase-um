@@ -4,7 +4,7 @@ import Transacao from "./transacao/transacao";
 import { getTransacoes } from "@/utils/transacoes";
 import { useEffect, useState } from "react";
 
-export default function ListaTransacoes({quantidade, podeExcluir}: {quantidade?: number, podeExcluir?: boolean}) {
+export default function ListaTransacoes({quantidade, podeEditar}: {quantidade?: number, podeEditar?: boolean}) {
   const [transacoes, setTransacoes] = useState<ITransacao[]>([]);
   const [atualizar, setAtualizar] = useState<boolean>(false);
 
@@ -24,7 +24,7 @@ export default function ListaTransacoes({quantidade, podeExcluir}: {quantidade?:
 
   if (!transacoes || transacoes.length === 0) {
     return (
-        <div className="flex flex-col items-center justify-center pt-(--m)">
+        <div className="flex flex-col sm:items-center sm:justify-center py-(--m)">
           <p className="text-[length:var(--texto-m)]">Não foi possível buscar as suas transações</p>
           <p className="text-[length:var(--texto-m)]">Por favor, insira uma nova transação</p>
         </div>
@@ -38,7 +38,7 @@ export default function ListaTransacoes({quantidade, podeExcluir}: {quantidade?:
             <Transacao 
               key={transacao.id} 
               transacao={transacao} 
-              podeExcluir={podeExcluir}
+              podeEditar={podeEditar}
               onExclusao={atualizarTransacoes}
             ></Transacao>
           ))

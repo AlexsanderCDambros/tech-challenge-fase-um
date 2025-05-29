@@ -55,7 +55,7 @@ export default function FormTransacoes({ transacao }: { transacao: ITransacao | 
         await ajustarSaldo(formData, 'normal');
 
         await new Promise(resolve => setTimeout(resolve, 400));
-        router.replace('/inicio');
+        router.back();
     };
 
     return (
@@ -107,15 +107,20 @@ export default function FormTransacoes({ transacao }: { transacao: ITransacao | 
                     </div>
                     <div className="flex flex-col gap-(--p)">
                         <label className="text-[length:var(--texto-p)]" htmlFor="valor">Valor R$</label>
-                        <input 
-                            className="input-number"
-                            type="number" 
-                            name="valor"
-                            id="valor"
-                            value={formData.valor}
-                            onChange={handleChange}
-                            required
-                        />
+                        <div className="container-input-monetario">
+                            <div className="prefixo-monetario">{formData?.tipo === 'Receita' ? '+' : '-'} R$ </div>
+                            <input 
+                                className="input-monetario"
+                                type="number" 
+                                min="0.01"
+                                step="0.01"
+                                name="valor"
+                                id="valor"
+                                value={formData.valor}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
                     </div>
                     <div className="flex flex-col gap-(--p)">
                         <label className="text-[length:var(--texto-p)]" htmlFor="data">Data</label>

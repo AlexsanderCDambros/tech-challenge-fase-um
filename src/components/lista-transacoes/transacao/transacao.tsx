@@ -5,11 +5,11 @@ import { ajustarSaldo } from "@/utils/saldo-conta-corrente";
 import { deleteTransacao } from "@/utils/transacoes";
 
 export default function Transacao(
-  { transacao, onExclusao, podeExcluir }:
+  { transacao, onExclusao, podeEditar }:
   { 
     transacao: ITransacao, 
     onExclusao: () => void,
-    podeExcluir?: boolean
+    podeEditar?: boolean
   }) {
 
   async function excluirTransacao() {
@@ -58,22 +58,21 @@ export default function Transacao(
                 'text-(--sucesso)' :
                 'text-(--erro)'
               }`}
-            >{transacao.tipo === 'Receita' ? '+' : '-'}R$ {Number(transacao.valor).toFixed(2)}</p>
+            >{transacao.tipo === 'Receita' ? '+' : '-'} R$ {Number(transacao.valor).toFixed(2)}</p>
             <p className="text-[length:var(--texto-p)]">{formatDate(transacao.data)}</p>
           </div>
         </div>
-        <div className="flex justify-end sm:justify-between items-center gap-(--p)">
-          <Link
-            href={`/transacao/${transacao.id}`}
-          >
-            <button className="botao-primario">Editar</button>
-          </Link>
-          {
-            podeExcluir ? 
-              <button onClick={excluirTransacao} className="botao-exclusao">Excluir</button> :
-              ''
-          }
-        </div>
+        {
+            podeEditar ?
+              <div className="flex justify-end sm:justify-between items-center gap-(--p)">
+                <Link
+                  href={`/transacao/${transacao.id}`}
+                >
+                  <button className="botao-primario">Editar</button>
+                </Link>
+                <button onClick={excluirTransacao} className="botao-exclusao">Excluir</button> :
+              </div>
+        : ''}
       </div>
     </li>
   )

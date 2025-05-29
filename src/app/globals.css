@@ -144,15 +144,40 @@ body {
   border-color: var(--texto-fundo-claro);
 }
 
-.input-number {
+.input-monetario {
   padding: var(--p);
   margin: 0;
-  border-radius: var(--canto-botoes);
+  border-bottom-right-radius: var(--canto-botoes);
+  border-top-right-radius: var(--canto-botoes);
   background-color: var(--fundo-geral);
   color: var(--texto-fundo-claro);
   border-width: 1px;
+  border-left-width: 0;
   border-style: solid;
   border-color: var(--texto-fundo-claro);
+  width: 100%;
+}
+
+.prefixo-monetario {
+  padding: var(--p);
+  margin: 0;
+  border-bottom-left-radius: var(--canto-botoes);
+  border-top-left-radius: var(--canto-botoes);
+  background-color: var(--fundo-geral);
+  color: var(--texto-fundo-claro);
+  border-width: 1px;
+  border-right-width: 0;
+  border-style: solid;
+  border-color: var(--texto-fundo-claro);
+  white-space: nowrap;
+}
+
+.container-input-monetario {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0;
+  width: 100%;
 }
 
 .input-data {
